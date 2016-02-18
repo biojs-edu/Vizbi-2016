@@ -2043,6 +2043,16 @@ body {
 .chart {
   height: 500px;
 }
+.reveal pre code {
+  display: block;
+  padding: 5px;
+  overflow: auto;
+  max-height: 400px;
+  word-wrap: normal;
+}
+.reveal code {
+  font-family: monospace;
+}
 .reveal table {
   margin: auto;
   border-collapse: collapse;
