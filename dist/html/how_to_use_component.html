@@ -1,0 +1,121 @@
+<html>
+
+    <head>
+        <meta charset="UTF8">
+        <link rel="stylesheet" type="text/css" href="../css/App.css">
+        <link rel="stylesheet" type="text/css" href="../css/markdown.css">
+    </head>
+    
+    <body>
+        
+        <div class="reveal">
+        
+            <div class="slides">
+                <section>
+                    <table style="allign:center">
+                        <tr>
+                            <td><div class="logo"></div></td>
+                            <td><h1>BioJS</h1></td>
+                        </tr>
+                    </table>
+                    <h4>How to use a BioJS Component?</h4>
+                    <h5>Protein Features Viewer</h5>
+                </section>
+                
+                <section>
+                    <h1>1. The HTML</h1>
+                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
+    
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+                    <p>We need an HTML element such as &lt;div&gt; or &lt;span&gt; that can act as a container where the component will be located.</p>
+                </section>
+                
+                <section>
+                    <h1>2. The CSS</h1>
+                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css"</span>/&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css"</span>/&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
+    
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+                    <p>We need to link the css files.</p>
+                </section>
+                
+                <section>
+                    <h2>3. The JavaScript</h2>
+                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css"</span>/&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css"</span>/&gt;</span></span>
+        
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src="http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js"</span>&gt;</span></span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+    
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span></span>
+            window.onload = function() {
+                var yourDiv = document.getElementById('yourDiv');
+                var biojs_vis_proteinFeaturesViewer = require('biojs-vis-proteinfeaturesviewer');
+                var instance = new biojs_vis_proteinFeaturesViewer({
+                    el: yourDiv,
+                    uniprotacc : 'P05067'
+                });
+            }
+        <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+    
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
+    
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
+                    <p>Finally, we need to link the js files and initialize the component.</p>
+                </section>
+                
+                <section>
+                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
+    
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
+    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span>
+                   
+                   
+<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src="http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js"</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
+                  
+                     
+  
+                   </code></pre> 
+                </section>
+                
+                <section>
+                   <pre><code class=" hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">section</span> <span class="hljs-attribute">data-markdown</span>&gt;</span></span>
+  ## Markdown support
+
+  Write content using inline or external Markdown.
+  Instructions and more info available in the [<span class="hljs-link_label">readme</span>](<span class="hljs-link_url">https://github.com/hakimel/reveal.js#markdown</span>).
+<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">section</span>&gt;</span></span>
+</code></pre> 
+                </section>
+                
+            </div>
+            
+            
+        </div>
+    </body>
+    <script src="../js/App.js"></script>
+
+</html>
