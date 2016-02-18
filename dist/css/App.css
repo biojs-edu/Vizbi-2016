@@ -2040,6 +2040,9 @@ body {
   -ms-animation-timing-function: linear;
   -o-transition: rotate(3600deg);
 }
+.chart {
+  height: 500px;
+}
 /* Logo spin */
 @-moz-keyframes spin {
   from {
