@@ -1,0 +1,11 @@
+.left {
+    text-align: left;
+}
+.top {
+    vertical-align: top;
+}
+
+p.first_in_slide {
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
