@@ -10,7 +10,7 @@ var _data = {
             },
             columns: [
                 ['x1', 1, 2, 3, 4, 5],
-                ['1 Begginer - 5 expert', 30, 200, 100, 400, 150, 250]
+                ['1 Beginer - 5 Expert', 30, 200, 100, 400, 150, 250]
             ],
             type: 'bar'
         }
