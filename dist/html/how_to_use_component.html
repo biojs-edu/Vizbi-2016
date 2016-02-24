@@ -41,25 +41,49 @@
                 
                 <section>
                     <h3>Step 1: Empty page</h3>
-                    <p>
-                        We need a page ready to display protein features
-                        <ul>
-                            <li>Open any simple text editor</li>
-                            <li>Name the file myPage.html</li>
-                        </ul>
-                    </p>
-                    <img src="../img/step1.png">
+                    
+                    We need a page ready to display protein features
+                    <ul>
+                        <li>Open any simple text editor</li>
+                        <li>Name the file myPage.html</li>
+                    </ul>
+                    
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- We will use this div to host the feature viewer. --&gt;
+    &lt;!-- Identify it as target_ft and give it a width of 1200px --&gt;
+    &lt;div id="" width=""/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
-            
                 <section>
                     <h3>Step 2: Empty page</h3>
-                    <p>
-                        In order to get the protein data, we need to enable users to let us know which protein accession they want to use
-                        <ul>
-                            <li>First we will create an element for users to write down a protein accession</li>
-                        </ul>
-                    </p>
-                    <img src="../img/step2.png">
+                    
+                    In order to get the protein data, we need to enable users to let us know which protein accession they want to use
+                    <ul>
+                        <li>First we will create an element for users to write down a protein accession</li>
+                    </ul>
+                    
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- We will use this div to create an input element identified 
+    as accession. --&gt;
+    &lt;!-- Additionally, we will create a button. The button will 
+    trigger the function getData when clicked. --&gt;
+    &lt;div&gt;
+        &lt;input id=""&gt;
+        &lt;button onClick=""&gt;Get Data/&lt;button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="target_ft" width="1200px"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
         
                 <section>
@@ -67,30 +91,133 @@
                     <p>
                         In order to get the protein data, we need to enable users to let us know which protein accession they want to use
                     </p>
-                    <img height="550" src="../img/step3.png">
+                    
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    
+    &lt;script&gt;
+        var getData = function(){
+            /* Get the value inside the input identfied as 'accession' 
+               Tip: use the attribute 'html'*/
+            var accession = '';
+            
+            /* Get the element identified as 'target_ft' */
+            var element = null;
+        }
+    &lt;/script&gt;
+    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;input id="accession"&gt;
+        &lt;button onClick="getData()"&gt;Get Data/&lt;button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="target_ft" width="1200px"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
         
                 <section>
-                    <h3>Step 4: Capturing the input data</h3>
+                    <h3>Step 4:  Make sure so far is working!</h3>
                     <p>
                        Let’s see if we are indeed capturing what the user has written down in our input element
                     </p>
-                    <img src="../img/step4.png">
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    &lt;script&gt;
+        var getData = function(){
+            
+            var accession = document.getElementById('accession').html;
+            var element = document.getElementById('target_ft');
+            
+            alert(accession);
+        }
+    &lt;/script&gt;
+    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;input id="accession"&gt;
+        &lt;button onClick="getData()"&gt;Get Data/&lt;button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="target_ft" width="1200px"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
         
                 <section>
-                    <h3>Step 5: Make sure so far is working!</h3>
+                    <h3>Step 5: Include the required files</h3>
                     
-                        <ul>
-                            <li>You can safely remove the alert now to avoid visual noise</li>
-                            <li>Include ProteinFeaturesViewer JavaScript and CSSs</li>
-                        </ul>
-                    <img src="../img/step5.png">
+                    <ul>
+                        <li>You can safely remove the alert now to avoid visual noise</li>
+                        <li>Include ProteinFeaturesViewer JavaScript and CSSs</li>
+                    </ul>
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    
+    &lt;!-- Required libs! --&gt;
+    &lt;script src=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css&quot; rel=&quot;stylesheet&quot;/&gt;
+    &lt;link href=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css&quot; rel=&quot;stylesheet&quot;/&gt;
+    
+    &lt;script&gt;
+        var getData = function(){
+            var accession = document.getElementById('accession').html;
+            var element = document.getElementById('target_ft');
+        }
+    &lt;/script&gt;
+    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;input id="accession"&gt;
+        &lt;button onClick="getData()"&gt;Get Data/&lt;button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="target_ft" width="1200px"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
         
                 <section>
                     <h3>Step 6: Instantiate the ProteinFeaturesViewer component</h3>
-                    <img src="../img/step6.png">
+                    <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    
+    &lt;!-- Required libs! --&gt;
+    &lt;script src=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js&quot;&gt;&lt;/script&gt;
+    &lt;link href=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css&quot; rel=&quot;stylesheet&quot;/&gt;
+    &lt;link href=&quot;http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css&quot; rel=&quot;stylesheet&quot;/&gt;
+    
+    &lt;script&gt;
+        var getData = function(){
+            var accession = document.getElementById('accession').html;
+            var element = document.getElementById('target_ft');
+            
+            var app = require('biojs-vis-proteinfeaturesviewer');
+            var instance = new app({
+                el: element,
+                uniprotacc: accession
+            });
+        }
+    &lt;/script&gt;
+    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div&gt;
+        &lt;input id="accession"&gt;
+        &lt;button onClick="getData()"&gt;Get Data/&lt;button&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="target_ft" width="1200px"/&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
                 </section>
                 
                 <section>
@@ -104,101 +231,7 @@
                 <section>
                     <p><a href="../index.html#/1">Back to program</a></p>
                 </section>
-        
-                
-                <!--
-                <section>
-                    <h1>1. The HTML</h1>
-                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
-    
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
-                    <p>We need an HTML element such as &lt;div&gt; or &lt;span&gt; that can act as a container where the component will be located.</p>
-                </section>
-                
-                <section>
-                    <h1>2. The CSS</h1>
-                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css"</span>/&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css"</span>/&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
-    
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
-                    <p>We need to link the css files.</p>
-                </section>
-                
-                <section>
-                    <h2>3. The JavaScript</h2>
-                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">!DOCTYPE html</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/main.css"</span>/&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">link</span> <span class="hljs-attribute">href="http://ebi-uniprot.github.io/CDN/feature-viewer/css/fontello.css"</span>/&gt;</span></span>
-        
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src="http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js"</span>&gt;</span></span><span class="xml">
-    <span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
-    
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span>&gt;</span></span>
-            window.onload = function() {
-                var yourDiv = document.getElementById('yourDiv');
-                var biojs_vis_proteinFeaturesViewer = require('biojs-vis-proteinfeaturesviewer');
-                var instance = new biojs_vis_proteinFeaturesViewer({
-                    el: yourDiv,
-                    uniprotacc : 'P05067'
-                });
-            }
-        <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
-    
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
-    
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span></code></pre>
-                    <p>Finally, we need to link the js files and initialize the component.</p>
-                </section>
-                
-                <section>
-                   <pre><code class="hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">html</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span></span>
-    
-    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span></span>
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id="myDiv"</span>/&gt;</span></span>
-    <span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span></span>
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span></span>
-                   
-                   
-<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src="http://ebi-uniprot.github.io/CDN/feature-viewer/featuresviewer.js"</span>&gt;</span></span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span></span>
-                  
-                     
-  
-                   </code></pre> 
-                </section>
-                
-                <section>
-                   <pre><code class=" hljs markdown"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">section</span> <span class="hljs-attribute">data-markdown</span>&gt;</span></span>
-  ## Markdown support
-
-  Write content using inline or external Markdown.
-  Instructions and more info available in the [<span class="hljs-link_label">readme</span>](<span class="hljs-link_url">https://github.com/hakimel/reveal.js#markdown</span>).
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-title">section</span>&gt;</span></span>
-</code></pre> 
-                </section>-->
-                
-            </div>
-            
-            
+           
         </div>
     </body>
     <script src="../js/App.js"></script>

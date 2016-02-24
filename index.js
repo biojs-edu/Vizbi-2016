@@ -1,4 +1,5 @@
 var Reveal = require('reveal');
+var highlight = require('highlight.js'); // Highlight code
 var chartFactory = require('./js/chartFactory.js');
 
 // Full list of configuration options available here: 
@@ -15,3 +16,6 @@ Reveal.initialize({
 //Bind Events
 Reveal.addEventListener( 'slidechanged', chartFactory.slideChange);
 Reveal.addEventListener( 'ready', chartFactory.slideChange);
+
+//Init Highlighting
+highlight.initHighlighting();

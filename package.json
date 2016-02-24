@@ -18,6 +18,7 @@
   "homepage": "https://github.com/biojs-edu/Vizbi-2016",
   "dependencies": {
     "c3": "^0.4.11-rc4",
+    "highlight.js": "^9.2.0",
     "reveal": "0.0.4"
   },
   "devDependencies": {
