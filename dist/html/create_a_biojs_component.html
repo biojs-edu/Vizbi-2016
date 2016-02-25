@@ -21,6 +21,10 @@
                     <div class="bounce arrow"></div>
                 </section>
                 <section>
+                     <h3>TASK</h3>
+                     <h4>Create a BioJS component that displays a barchart that visualizes de contribution of the bases of a biological sequence.</h4>
+                </section>
+                <section>
                 	<section>
 						<h2>What does it takes to be a BioJS component?</h2>
 						<div>
@@ -147,7 +151,79 @@ var instance = new app({el: rootDiv, text: 'biojs'});</code></pre>
 
 				</section>
 				<section>
-					<h2>Modules and Dependencies</h2>
+					<section>
+						<h2>Modules and Dependencies</h2>
+					</section>
+					<section>
+						<h3>Modules in Node.js</h3>
+						<p><a href="https://nodejs.org/api/modules.html">https://nodejs.org/api/modules.html</a></p>
+						<br/>
+						<p class='left' >Files and modules are in one-to-one correspondence.</p>
+						<div class="fragment fade-in"><br/>
+							<p class='left' >Export 1 object per file, assigning it to <code class="inline">module.exports</code>. For example the file <code class="inline">biojs-vis-example/lib/example.js</code>:</p>
+							<pre><code class="javascript">module.exports = " - from another module";</code></pre>
+						</div>
+						<div class="fragment fade-in"><br/>
+							<p class='left' >And to import it in another file you can use the function <code class="inline">require()</code>. For example in the file <code class="inline">biojs-vis-example/lib/index.js</code>:</p>
+							<pre><code class="javascript">var example = require("./example.js");
+console.log(example); // - from another module</code></pre>
+						</div>
+						<br/>
+					</section>
+					<section>
+						<h3>Next Task</h3>
+						<br/>
+						<p class='left' >Remove the functionality of displaying <code class="inline">"Hello BioJS"</code> and make it show <code class="inline">"BARCHART"</code>, but the code should be in a separate module.</p>
+						<br/>
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<pre><code class="javascript">var Barchart = function(opts) {
+	var container = opts.el;
+	container.textContent = "BARCHART";
+	container.setAttribute("class", "header");
+}
+module.exports = Barchart;
+</code></pre>
+						</div>
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/lib/index.js</code>:</p>
+							<pre><code class="javascript">var  biojsvisexample;
+var Barchart = require("./barchart.js");
+module.exports = biojsvisexample = function(opts){
+	var bc = new Barchart(opts);
+};
+</code></pre>
+						</div>
+					</section>
+					<section>
+						<h3>Dependencies in Node.js</h3>
+						<br/>
+						<p class='left' >Using npm is possible to install any module that is in the repository. For example:</p>
+						<pre><code class="bash">npm i d3 --save</code></pre>
+						<p class='left' >And then you can use it as a module in your files with:</p>
+						<pre><code class="javascript">var d3 = require('d3');</code></pre>
+					</section>
+					<section>
+						<h3>Next Task</h3>
+						<br/>
+						<p class='left' >Refactor your code to use D3 to manipulate your DOM.</p>
+						<br/>
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<pre><code class="javascript">var d3 = require("d3");
+
+var Barchart = function(opts) {
+  var container = opts.el;
+
+  d3.select(container)
+    .attr("class", "header")
+    .text("Space for a barchart with D3!");
+}
+
+module.exports = Barchart;
+</code></pre>
+						</div>
+					</section>
 				</section>
 				<section>
 					<h2>Data Processing</h2>
