@@ -226,7 +226,56 @@ module.exports = Barchart;
 					</section>
 				</section>
 				<section>
-					<h2>Data Processing</h2>
+					<section>
+						<h2>Data Processing</h2>
+					</section>
+					<section>
+						<h3>Next Task</h3>
+						<br/>
+						<p class='left' >Given a sequence in your options, count how many times each base appears in it, and then display this values in the page.</p>
+						<br/>						
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/examples/simple.js</code>:</p>
+							<pre><code class="javascript">var app = require("biojs-vis-example");
+var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatg"});
+</code></pre>
+						</div>
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<pre><code class="javascript">...
+var getBases = function(sequence) {
+  var s = sequence.toUpperCase();
+  var bases = {};
+  for (var i =0;i&lt;s.length;i++){
+    if (typeof bases[s[i]] == "undefined")
+      bases[s[i]] = 1;
+    else
+      bases[s[i]]++; 
+  }
+  return bases;
+} // Object {C: 9, A: 9, G: 20, T: 10}
+</code></pre>
+						</div>
+					</section>
+					<section>
+						<pre><code class="javascript">...
+var Barchart = function(opts) {
+  var container = opts.el;
+  var bases = getBases(opts.sequence);
+
+  d3.select(container)
+    .attr("class", "header")
+    .text("Bases:")
+    .selectAll("p")
+    .data(d3.keys(bases)).enter()
+    .append("p")
+      .text(function(d){
+        return d +": "+bases[d];
+      });
+}
+</code></pre>
+					</section>
+
 				</section>
 				<section>
 					<h2>Visualizing</h2>
