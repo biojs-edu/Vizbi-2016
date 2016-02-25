@@ -22,7 +22,10 @@
                 </section>
                 <section>
                      <h3>TASK</h3>
-                     <h4>Create a BioJS component that displays a barchart that visualizes de contribution of the bases of a biological sequence.</h4>
+                     <p class="first_in_slide left">Create a BioJS component that displays a barchart that visualizes de contribution of the bases of a biological sequence.</p>
+                     <br/>
+				     <img src="../img/barchart.png" style="border:0px"/>
+                     <code class="inline">CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatgCC</code>
                 </section>
                 <section>
                 	<section>
@@ -274,12 +277,64 @@ var Barchart = function(opts) {
       });
 }
 </code></pre>
+						<p>Interested in d3?? Read about <a href="https://bost.ocks.org/mike/join/">Thinking with Joins</a></p>
 					</section>
 
 				</section>
 				<section>
-					<h2>Visualizing</h2>
-					<a href="https://bost.ocks.org/mike/bar/">https://bost.ocks.org/mike/bar/</a>
+					<section>
+						<h2>Visualizing</h2>
+						<a href="https://bost.ocks.org/mike/bar/">https://bost.ocks.org/mike/bar/</a>
+					</section>
+					<section>
+						<h3>Next Task</h3>
+						<br/>
+						<p class='left' >Change the text representation for a barchart.</p>
+						<br/>						
+						<div class="fragment fade-in">
+							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<pre><code class="javascript" style="max-height: 500px;">...
+var Barchart = function(opts) {
+  var container = opts.el,
+    bases = getBases(opts.sequence),
+    keys = d3.keys(bases),
+    values = keys.map(function(e){return bases[e];});
+  
+  var x = d3.scale.linear()
+    .domain([0, d3.max(values)])
+    .range([0, 420]);
+  
+  d3.select(container)
+    .attr("class", "chart")
+    .selectAll("div")
+    .data(keys)
+    .enter().append("div")
+      .style("width", function(d) { return x(bases[d]) + "px"; })
+      .text(function(d) { return bases[d]+":"+d; });
+}
+</code></pre>
+						</div>
+					</section>
+					<section>
+						<h3>Style!</h3>
+						<p class="left"><code class="inline">biojs-vis-example/css/main.css</code></p>
+						<pre><code class="css">
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+.chart div:hover {
+  background-color: cadetblue;
+  font-size: 12px;
+}
+
+</code></pre>
+					</section>
 				</section>
 				<section>
 					<h2>Publishing</h2>
