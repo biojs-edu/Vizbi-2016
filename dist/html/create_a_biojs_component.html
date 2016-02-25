@@ -8,6 +8,10 @@
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/zenburn.min.css">
 		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js"></script>
         <link rel="stylesheet" type="text/css" href="../css/biojs.css">
+
+<script src="https://wzrd.in/bundle/biojs-vis-example@0.1.1"></script>
+<link type="text/css" rel="stylesheet" href="https://cdn.rawgit.com/4ndr01d3/biojs-vis-example/master/css/main.css">
+
     </head>
     
     <body>
@@ -202,7 +206,7 @@ module.exports = biojsvisexample = function(opts){
 						<h3>Dependencies in Node.js</h3>
 						<br/>
 						<p class='left' >Using npm is possible to install any module that is in the repository. For example:</p>
-						<pre><code class="bash">npm i d3 --save</code></pre>
+						<pre><code class="bash">$ npm i d3 --save</code></pre>
 						<p class='left' >And then you can use it as a module in your files with:</p>
 						<pre><code class="javascript">var d3 = require('d3');</code></pre>
 					</section>
@@ -337,7 +341,55 @@ var Barchart = function(opts) {
 					</section>
 				</section>
 				<section>
-					<h2>Publishing</h2>
+					<section>
+						<h2>Publishing</h2>
+					</section>
+					<section>
+						<h3>Checklist</h3>
+						<ul>
+							<li class="fragment fade-in">Have you put your component in GitHub?<br/>
+								<a href="https://help.github.com/">GitHub Help</a></li>
+							<li class="fragment fade-in">Have you signed up in npm?<br/>
+								<a href="https://www.npmjs.com/signup">npm signup</a></li>
+							<li class="fragment fade-in">Does your <code class="inline">package.json</code> file includes the biojs tag and points to the right github repo?<br/>
+								<a href="http://edu.biojs.net/101/publish_it/">Other Checking.</a></li>
+							<li class="fragment fade-in">Have you added your npm user in this terminal?
+								<pre><code class="bash">$ npm adduser</code></pre></li>
+						</ul>
+						<div class="fragment fade-in">
+							<p class="left">Then simply:</p>
+							<pre><code class="bash">$ npm publish</code></pre></li>
+						</div>
+					</section>
+					<section>
+						<h3>Result</h3>
+						<div class="fragment fade-in">
+							<p class="left">Here is the code in this page:</p>
+							<pre><code class="html">&lt;div id='snippetDiv'>&lt;/div>
+&lt;script>
+var rootDiv = document.getElementById('snippetDiv');
+// if you don't specify a html file, the sniper will generate a div with id "rootDiv"
+var app = require("biojs-vis-example");
+var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatgCC"});
+&lt;/script>
+</code></pre>
+						</div>
+						<br/>
+						<div class="fragment fade-in">
+							<p class="left">And here how it looks:</p>
+							<div id='snippetDiv' style="height: 100%;"></div>
+						</div>
+						<br/>
+						<div class="fragment fade-in">
+							<a href ="http://biojs.io/d/biojs-vis-example">Check the registry</a>
+						</div>
+						<script>
+var rootDiv = document.getElementById('snippetDiv');
+// if you don't specify a html file, the sniper will generate a div with id "rootDiv"
+var app = require("biojs-vis-example");
+var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatgCC"});
+						</script>
+					</section>
 				</section>
                 <section>
                     <p><a href="../index.html#/1">Back to program</a></p>
