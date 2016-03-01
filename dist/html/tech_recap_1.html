@@ -2,7 +2,8 @@
 
     <head>
         <meta charset="UTF8">
-        <link rel="stylesheet" type="text/css" href="../css/App.css">
+        <link rel="stylesheet" type="text/css" href="../css/App.css"> 
+        <link rel="stylesheet" type="text/css" href="../css/markdown.css">
         
     </head>
     
@@ -27,12 +28,57 @@
                 
                 <section>
                     <h1>HTML</h1>
-                    <p>Hypertext Markup Language</p>
+                    <p> <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage</p>
                 </section>
                 
                 <section>
-                    <img src="../img/html.png"/>
-                    <small>Source: https://github.com/CS171/2014-lab1</small>
+                    <h3>What is HTML?</h3>
+                    <div style="height: 400px;position: relative;">
+                        <small class="left">
+                            <br>
+                            <br>
+                            <p>HTML is a markup language for describing web documents (web pages).</p>
+                            <ul>
+                                <li>HTML stands for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage</li>
+                                <li>A markup language is a set of markup tags</li>
+                                <li>HTML documents are described by HTML tags</li>
+                                <li>Each HTML tag describes different document content</li>
+                            </ul>
+                        </small>
+                        <div class="right">
+                            <br>
+                        <pre><code>&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My title&lt;/title&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a href=""&gt;My link&lt;/a&gt;
+    &lt;h1&gt;My header&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>HTML's three structure</h3>
+                    
+                    <div style="height: 400px;position: relative;">
+                        <div id="cy" class="right"></div>
+                        <div class="left">
+                            <br>
+                        <pre><code id="domcode">&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My title&lt;/title&gt;    
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a href=""&gt;My link&lt;/a&gt;
+    &lt;h1&gt;My header&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                            <small>Objects in the DOM can be manipulated by JavaScript (<a href="" id="addRemove">add/remove Element</a>)</small>
+                        </div>
+                    </div>
                 </section>
                 
                 <section>
@@ -63,8 +109,30 @@
                 </section>
                 
                 <section>
-                    <img src="../img/css.png"/>
-                    <small>Source: https://github.com/CS171/2014-lab1</small>
+                    <h3>What is CSS?</h3>
+                    <div style="height: 400px;position: relative;">
+                        <small id="cssTarget" class="left">
+                            <br>
+                            <br>
+                            <p>CSS is stylesheet language for the web. Makes webpages look good.</p>
+                            <ul>
+                                <li>CSS stands for <b>C</b>ascading <b>S</b>tyle <b>S</b>heets</li>
+                                <li>Includes fonts, colors, and many other properties.</li>
+                                <li>CSS is applied to HTML elements, with CSS properties.</li>
+                                <li>CSS can be included in the document with <span class="hljs-tag" style="color:steelblue">&lt;<span class="hljs-name">style</span>&gt;</span> or imported from an external file with <span class="hljs-tag" style="color:steelblue">&lt;<span class="hljs-name">link</span>&gt;</span>.</li>
+                            </ul>
+                        </small>
+                        <small class="right">
+                            <br>
+                            <br>
+                            <p>Example Porperties:</p>
+                            <pre>  <input class="cssCheck" type="checkbox" value="color:red"> color:red
+  <input class="cssCheck" type="checkbox" value="background-color:steelblue"> background-color:steelblue
+  <input class="cssCheck" type="checkbox" value="display:none"> display:none;
+  <input class="cssCheck" type="checkbox" value="font-family:Times"> font-family:Times
+                            </pre>
+                        </small>
+                    </div>
                 </section>
                 
                 <section>

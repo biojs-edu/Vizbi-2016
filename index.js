@@ -19,3 +19,25 @@ Reveal.addEventListener( 'ready', chartFactory.slideChange);
 
 //Init Highlighting
 highlight.initHighlighting();
+
+//Init Graph
+require('./js/graph.js');
+
+//Css checkbox example
+var ch = document.getElementsByClassName("cssCheck");
+var target = document.getElementById("cssTarget");
+
+function handleClick(e){
+    
+    var el = e.srcElement;
+    var prop = el.value.split(':');
+    
+    if(el.checked){
+        target.style[prop[0]] = prop[1];
+    }else{
+        target.style[prop[0]] = null;
+    }
+}
+
+for(var i=0; i<ch.length; i++)
+    ch[i].addEventListener("click", handleClick);

@@ -2043,6 +2043,20 @@ body {
 .chart {
   height: 500px;
 }
+.left {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.right {
+  height: 100%;
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
 .reveal pre code {
   display: block;
   padding: 5px;
