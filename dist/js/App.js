@@ -42,6 +42,14 @@ function handleClick(e){
 
 for(var i=0; i<ch.length; i++)
     ch[i].addEventListener("click", handleClick);
+
+//Objects in the DOM can be manipulated by JavaScript example
+function changeTitle(){
+    var title = document.getElementById("slideTitle");
+    title.innerText = "See?? JS can manipulate dom objects";
+}
+
+document.getElementById("titleButton").addEventListener("click", changeTitle);
 },{"./js/chartFactory.js":2,"./js/graph.js":3,"highlight.js":8,"reveal":159}],2:[function(require,module,exports){
 var c3 = require('c3');
 
