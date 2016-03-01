@@ -170,7 +170,16 @@
                             </ul>
                         </li>
                     </ul>
-                    <small>Objects in the DOM can be manipulated by JavaScript</small>
+                </section>
+                
+                <section>
+                    <h3 id="slideTitle">Objects in the DOM can be manipulated by JavaScript</h3>
+                    <pre><code>//Objects in the DOM can be manipulated by JavaScript
+function changeTitle(){
+    var title = document.getElementById("slideTitle");
+    title.innerText = "See?? JS can manipulate dom objects";
+}</code></pre>
+                    <button id="titleButton" type="button">Click Me!</button>
                 </section>
                 
                 <section>
