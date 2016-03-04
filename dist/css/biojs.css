@@ -1,8 +1,12 @@
-.left {
+.left_create {
     text-align: left;
 }
-.top {
+.top_create {
     vertical-align: top;
+}
+.right_create {
+	float:right;
+	width:68%
 }
 
 p.first_in_slide {

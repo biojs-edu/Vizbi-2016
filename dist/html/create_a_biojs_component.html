@@ -26,7 +26,7 @@
                 </section>
                 <section>
                      <h3>TASK</h3>
-                     <p class="first_in_slide left">Create a BioJS component that displays a barchart that visualizes de contribution of the bases of a biological sequence.</p>
+                     <p class="first_in_slide left_create">Create a BioJS component that displays a barchart that visualizes de contribution of the bases of a biological sequence.</p>
                      <br/>
 				     <img src="../img/barchart.png" style="border:0px"/>
                      <code class="inline">CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatgCC</code>
@@ -35,7 +35,7 @@
                 	<section>
 						<h2>What does it takes to be a BioJS component?</h2>
 						<div>
-							<p class="first_in_slide left fragment fade-in">Not much!<br/><br/>
+							<p class="first_in_slide left_create fragment fade-in">Not much!<br/><br/>
 							<span class="fragment fade-in">There are only 3 requirements to be in the BioJS registry:</span></p>
 							<ol>
 								<li class="fragment fade-in">The component has to be published in npm</li>
@@ -45,7 +45,7 @@
 						</div>
 					</section>
 					<section>
-						<p class="first_in_slide left">And a few <b>conventions</b>:</p>
+						<p class="first_in_slide left_create">And a few <b>conventions</b>:</p>
 						<ul>
 							<li class="fragment fade-in">Names: <code class="inline">biojs-[io/rest/vis/algo/…]-[name]</code></li>
 							<li class="fragment fade-in">Versioning: <a href="https://docs.npmjs.com/getting-started/semantic-versioning">Semver</a></li>
@@ -53,8 +53,8 @@
 						</ul>
 					</section>
 					<section>
-						<div class="left top">
-						<p class="first_in_slide left">But there are many <b>common</b> parts among BioJS components:</p>
+						<div class="left_create top_create">
+						<p class="first_in_slide left_create">But there are many <b>common</b> parts among BioJS components:</p>
 						<ul>
 							<li class="fragment fade-in">Packaging</li>
 							<li class="fragment fade-in">Styling</li>
@@ -72,10 +72,10 @@
 					<section>
 						<h3>Slush</h3>
 						<br/>
-						<div class='left' style='float:left;width:30%'>
+						<div class='left_create' style='float:left;width:30%'>
 							<img src="http://slushjs.github.io/assets/slush.png" style="border:0px"/>
 						</div>    
-						<div class='right' style='float:right;width:68%'>
+						<div class='right_create' >
 							<ul>
 								<li>Help you generate new project structures</li>
 								<li>You don’t need to use it, but it simplifies the work</li>
@@ -117,11 +117,11 @@ $ slush biojs
 					<section>
 						<h3>What did we get?</h3>
 						<br/>
-						<div class='left' style='float:left;width:30%'>
+						<div class='left_create' style='float:left;width:30%'>
 							<img src="../img/biojs_folders.png" style="border:0px"/>
 						</div>    
-						<div class='right' style='float:right;width:68%'>
-							<p class='left' >Available npm commands:
+						<div class='right_create'>
+							<p class='left_create' >Available npm commands:
 <pre><code class="bash">$ npm run test</code></pre>
 <pre><code class="bash">$ npm run sniper</code></pre>
 <pre><code class="bash">$ npm run watch</code></pre>
@@ -136,22 +136,22 @@ running: http://localhost:9090
 					<section>
 						<h3>Playing with the example</h3>
 						<br/>
-						<p class='left' >While <code class="inline">npm run w</code> is running open the example file <code class="inline">biojs-vis-example/examples/simple.js</code> in your favourite editor:</p>
+						<p class='left_create' >While <code class="inline">npm run w</code> is running open the example file <code class="inline">biojs-vis-example/examples/simple.js</code> in your favourite editor:</p>
 <pre><code class="javascript">// if you don't specify a html file, the sniper will generate a div with id "rootDiv"
 var app = require("biojs-vis-example");
 var instance = new app({el: rootDiv, text: 'biojs'});</code></pre>
-						<p class="left">Then try changing the <code class="inline">text</code> option and refreshing your browser.</p>
+						<p class="left_create">Then try changing the <code class="inline">text</code> option and refreshing your browser.</p>
 					</section>
 					<section>
-						<p class="left">The <code class="inline">npm run w</code> action, detects changes in your files, re-bundles the <code class="inline">biojs-vis-example/build/example.js</code> file, same for the CSS file, and exposes the result on <a href="http://localhost:9090/examples/simple">http://localhost:9090/examples/simple</a></p>
+						<p class="left_create">The <code class="inline">npm run w</code> action, detects changes in your files, re-bundles the <code class="inline">biojs-vis-example/build/example.js</code> file, same for the CSS file, and exposes the result on <a href="http://localhost:9090/examples/simple">http://localhost:9090/examples/simple</a></p>
 						<div class="fragment fade-in"><br/>
-							<p class="left">Change the CSS: <code class="inline">biojs-vis-example/css/main.css</code>
+							<p class="left_create">Change the CSS: <code class="inline">biojs-vis-example/css/main.css</code>
 							<pre><code class="css">.header {
 	font-weight: bold;
 	color: green;
 }
 </code></pre>
-							<p class="left">And add the following line at the end of the <code class="inline">biojsvisexample</code> function, in the JavaScript file: <code class="inline">biojs-vis-example/lib/index.js</code>
+							<p class="left_create">And add the following line at the end of the <code class="inline">biojsvisexample</code> function, in the JavaScript file: <code class="inline">biojs-vis-example/lib/index.js</code>
 							<pre><code class="css">this.el.setAttribute("class", "header");</code></pre>
 						</div>
 					</section>
@@ -165,13 +165,13 @@ var instance = new app({el: rootDiv, text: 'biojs'});</code></pre>
 						<h3>Modules in Node.js</h3>
 						<p><a href="https://nodejs.org/api/modules.html">https://nodejs.org/api/modules.html</a></p>
 						<br/>
-						<p class='left' >Files and modules are in one-to-one correspondence.</p>
+						<p class='left_create' >Files and modules are in one-to-one correspondence.</p>
 						<div class="fragment fade-in"><br/>
-							<p class='left' >Export 1 object per file, assigning it to <code class="inline">module.exports</code>. For example the file <code class="inline">biojs-vis-example/lib/example.js</code>:</p>
+							<p class='left_create' >Export 1 object per file, assigning it to <code class="inline">module.exports</code>. For example the file <code class="inline">biojs-vis-example/lib/example.js</code>:</p>
 							<pre><code class="javascript">module.exports = " - from another module";</code></pre>
 						</div>
 						<div class="fragment fade-in"><br/>
-							<p class='left' >And to import it in another file you can use the function <code class="inline">require()</code>. For example in the file <code class="inline">biojs-vis-example/lib/index.js</code>:</p>
+							<p class='left_create' >And to import it in another file you can use the function <code class="inline">require()</code>. For example in the file <code class="inline">biojs-vis-example/lib/index.js</code>:</p>
 							<pre><code class="javascript">var example = require("./example.js");
 console.log(example); // - from another module</code></pre>
 						</div>
@@ -180,10 +180,10 @@ console.log(example); // - from another module</code></pre>
 					<section>
 						<h3>Next Task</h3>
 						<br/>
-						<p class='left' >Remove the functionality of displaying <code class="inline">"Hello BioJS"</code> and make it show <code class="inline">"BARCHART"</code>, but the code should be in a separate module.</p>
+						<p class='left_create' >Remove the functionality of displaying <code class="inline">"Hello BioJS"</code> and make it show <code class="inline">"BARCHART"</code>, but the code should be in a separate module.</p>
 						<br/>
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript">var Barchart = function(opts) {
 	var container = opts.el;
 	container.textContent = "BARCHART";
@@ -193,7 +193,7 @@ module.exports = Barchart;
 </code></pre>
 						</div>
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/lib/index.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/lib/index.js</code>:</p>
 							<pre><code class="javascript">var  biojsvisexample;
 var Barchart = require("./barchart.js");
 module.exports = biojsvisexample = function(opts){
@@ -205,18 +205,18 @@ module.exports = biojsvisexample = function(opts){
 					<section>
 						<h3>Dependencies in Node.js</h3>
 						<br/>
-						<p class='left' >Using npm is possible to install any module that is in the repository. For example:</p>
+						<p class='left_create' >Using npm is possible to install any module that is in the repository. For example:</p>
 						<pre><code class="bash">$ npm i d3 --save</code></pre>
-						<p class='left' >And then you can use it as a module in your files with:</p>
+						<p class='left_create' >And then you can use it as a module in your files with:</p>
 						<pre><code class="javascript">var d3 = require('d3');</code></pre>
 					</section>
 					<section>
 						<h3>Next Task</h3>
 						<br/>
-						<p class='left' >Refactor your code to use D3 to manipulate your DOM.</p>
+						<p class='left_create' >Refactor your code to use D3 to manipulate your DOM.</p>
 						<br/>
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript">var d3 = require("d3");
 
 var Barchart = function(opts) {
@@ -239,16 +239,16 @@ module.exports = Barchart;
 					<section>
 						<h3>Next Task</h3>
 						<br/>
-						<p class='left' >Given a sequence in your options, count how many times each base appears in it, and then display this values in the page.</p>
+						<p class='left_create' >Given a sequence in your options, count how many times each base appears in it, and then display this values in the page.</p>
 						<br/>						
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/examples/simple.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/examples/simple.js</code>:</p>
 							<pre><code class="javascript">var app = require("biojs-vis-example");
 var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatg"});
 </code></pre>
 						</div>
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript">...
 var getBases = function(sequence) {
   var s = sequence.toUpperCase();
@@ -293,10 +293,10 @@ var Barchart = function(opts) {
 					<section>
 						<h3>Next Task</h3>
 						<br/>
-						<p class='left' >Change the text representation for a barchart.</p>
+						<p class='left_create' >Change the text representation for a barchart.</p>
 						<br/>						
 						<div class="fragment fade-in">
-							<p class='left' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
+							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript" style="max-height: 500px;">...
 var Barchart = function(opts) {
   var container = opts.el,
@@ -321,7 +321,7 @@ var Barchart = function(opts) {
 					</section>
 					<section>
 						<h3>Style!</h3>
-						<p class="left"><code class="inline">biojs-vis-example/css/main.css</code></p>
+						<p class="left_create"><code class="inline">biojs-vis-example/css/main.css</code></p>
 						<pre><code class="css">
 .chart div {
   font: 10px sans-serif;
@@ -357,14 +357,14 @@ var Barchart = function(opts) {
 								<pre><code class="bash">$ npm adduser</code></pre></li>
 						</ul>
 						<div class="fragment fade-in">
-							<p class="left">Then simply:</p>
+							<p class="left_create">Then simply:</p>
 							<pre><code class="bash">$ npm publish</code></pre></li>
 						</div>
 					</section>
 					<section>
 						<h3>Result</h3>
 						<div class="fragment fade-in">
-							<p class="left">Here is the code in this page:</p>
+							<p class="left_create">Here is the code in this page:</p>
 							<pre><code class="html">&lt;div id='snippetDiv'>&lt;/div>
 &lt;script>
 var rootDiv = document.getElementById('snippetDiv');
@@ -376,7 +376,7 @@ var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGG
 						</div>
 						<br/>
 						<div class="fragment fade-in">
-							<p class="left">And here how it looks:</p>
+							<p class="left_create">And here how it looks:</p>
 							<div id='snippetDiv' style="height: 100%;"></div>
 						</div>
 						<br/>
