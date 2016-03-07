@@ -197,7 +197,8 @@ function discreteBarchar(el, data){
     var chart = nv.models.discreteBarChart()
       .x(function(d) { return d.label; })    //Specify the data accessors.
       .y(function(d) { return d.value; })
-      .showValues(true);
+      .showValues(true)
+      .forceY(5);
 
     
     
@@ -214,7 +215,7 @@ function _chart(el){
     var id = el.id;
     
     if(id === 'skills'){
-        nv.addGraph(multiBarHorizontalChart(el, _data[id]));
+        nv.addGraph(multiBarHorizontalChart(el, _data[id], 5));
     }else if(id === 'last'){
         nv.addGraph(discreteBarchar(el, _data[id]));
     }else if(id === 'os' || id === 'lang'){
@@ -20865,6 +20866,10 @@ var corefn = ({
       // user param easings...
 
       'spring': function( tension, friction, duration ){
+        if( duration === 0 ){ // can't get a spring w/ duration 0
+          return easings.linear; // duration 0 => jump to end so impl doesn't matter
+        }
+
         var spring = generateSpringRK4( tension, friction, duration );
 
         return function( start, end, percent ){
@@ -26886,7 +26891,7 @@ BRp.getLabelText = function( ele ){
     //console.log('wrap');
 
     // save recalc if the label is the same as before
-    if( rscratch.labelWrapKey === rscratch.labelKey ){
+    if( rscratch.labelWrapKey && rscratch.labelWrapKey === rscratch.labelKey ){
       // console.log('wrap cache hit');
       return rscratch.labelWrapCachedText;
     }
@@ -28658,7 +28663,11 @@ BRp.load = function() {
 
     var multSelKeyDown = isMultSelKeyDown( e );
 
-    r.hoverData.tapholdCancelled = true;
+    var isOverThresholdDrag = rdist2 >= r.desktopTapThreshold2;
+
+    if (isOverThresholdDrag) {
+      r.hoverData.tapholdCancelled = true;
+    }
 
     var updateDragDelta = function(){
       var dragDelta = r.hoverData.dragDelta = r.hoverData.dragDelta || [];
@@ -28681,37 +28690,40 @@ BRp.load = function() {
 
     // trigger context drag if rmouse down
     if( r.hoverData.which === 3 ){
-      var cxtEvt = Event(e, {
-        type: 'cxtdrag',
-        cyPosition: { x: pos[0], y: pos[1] }
-      });
+      // but only if over threshold
+      if( isOverThresholdDrag ){
+        var cxtEvt = Event( e, {
+          type: 'cxtdrag',
+          cyPosition: { x: pos[0], y: pos[1] }
+        } );
 
-      if( down ){
-        down.trigger( cxtEvt );
-      } else {
-        cy.trigger( cxtEvt );
-      }
-
-      r.hoverData.cxtDragged = true;
-
-      if( !r.hoverData.cxtOver || near !== r.hoverData.cxtOver ){
-
-        if( r.hoverData.cxtOver ){
-          r.hoverData.cxtOver.trigger( Event(e, {
-            type: 'cxtdragout',
-            cyPosition: { x: pos[0], y: pos[1] }
-          }) );
+        if( down ){
+          down.trigger( cxtEvt );
+        } else{
+          cy.trigger( cxtEvt );
         }
 
-        r.hoverData.cxtOver = near;
+        r.hoverData.cxtDragged = true;
 
-        if( near ){
-          near.trigger( Event(e, {
-            type: 'cxtdragover',
-            cyPosition: { x: pos[0], y: pos[1] }
-          }) );
+        if( !r.hoverData.cxtOver || near !== r.hoverData.cxtOver ){
+
+          if( r.hoverData.cxtOver ){
+            r.hoverData.cxtOver.trigger( Event( e, {
+              type: 'cxtdragout',
+              cyPosition: { x: pos[0], y: pos[1] }
+            } ) );
+          }
+
+          r.hoverData.cxtOver = near;
+
+          if( near ){
+            near.trigger( Event( e, {
+              type: 'cxtdragover',
+              cyPosition: { x: pos[0], y: pos[1] }
+            } ) );
+          }
+
         }
-
       }
 
     // Check if we are drag panning the entire graph
@@ -28797,7 +28809,7 @@ BRp.load = function() {
 
       if( down && down.isNode() && r.nodeIsDraggable(down) ){
 
-        if( rdist2 >= r.desktopTapThreshold2 ){ // then drag
+        if( isOverThresholdDrag ){ // then drag
 
           var justStartedDrag = !r.dragData.didDrag;
 
@@ -29358,6 +29370,8 @@ BRp.load = function() {
     var dist2 = dx2 + dy2;
     var rdist2 = dist2 * zoom * zoom;
 
+    var isOverThresholdDrag = rdist2 >= r.touchTapThreshold2;
+
     // context swipe cancelling
     if( capture && r.touchData.cxt ){
       e.preventDefault();
@@ -29579,7 +29593,7 @@ BRp.load = function() {
       // dragging nodes
       if( start != null && start._private.group == 'nodes' && r.nodeIsDraggable(start) ){
 
-        if( rdist2 >= r.touchTapThreshold2 ){ // then dragging can happen
+        if( isOverThresholdDrag ){ // then dragging can happen
           var draggedEles = r.dragData.touchDragEles;
           var justStartedDrag = !r.dragData.didDrag;
 
@@ -29663,7 +29677,7 @@ BRp.load = function() {
       for (var i=0;i<now.length;i++) {
         if( now[i]
           && r.touchData.startPosition[i]
-          && rdist2 > r.touchTapThreshold2 ){
+          && isOverThresholdDrag ){
 
           r.touchData.singleTouchMoved = true;
         }
@@ -29684,7 +29698,7 @@ BRp.load = function() {
             y: disp[1] * zoom
           });
 
-        } else if( rdist2 >= r.touchTapThreshold2 ){
+        } else if( isOverThresholdDrag ){
           r.swipePanning = true;
 
           cy.panBy({
@@ -33398,7 +33412,7 @@ var cytoscape = function( options ){ // jshint ignore:line
 };
 
 // replaced by build system
-cytoscape.version = '2.6.4';
+cytoscape.version = '2.6.5';
 
 // try to register w/ jquery
 if( window && window.jQuery ){
