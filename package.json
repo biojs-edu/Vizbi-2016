@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/biojs-edu/Vizbi-2016",
   "dependencies": {
-    "cytoscape": "^2.6.4",
+    "cytoscape": "^2.6.5",
     "d3": "^3.5.16",
     "highlight.js": "^9.2.0",
     "reveal": "0.0.4"
