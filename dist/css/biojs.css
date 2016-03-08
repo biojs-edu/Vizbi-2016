@@ -8,7 +8,11 @@
 	float:right;
 	width:68%
 }
-
+img.inline_create {
+	height:48px; 
+	border:0px !important;
+	margin:0px !important;
+}
 p.first_in_slide {
     margin-top: 5%;
     margin-bottom: 2%;

@@ -144,7 +144,8 @@ function discreteBarchar(el, data){
     var chart = nv.models.discreteBarChart()
       .x(function(d) { return d.label; })    //Specify the data accessors.
       .y(function(d) { return d.value; })
-      .showValues(true);
+      .showValues(true)
+      .forceY(5);
 
     
     
@@ -161,7 +162,7 @@ function _chart(el){
     var id = el.id;
     
     if(id === 'skills'){
-        nv.addGraph(multiBarHorizontalChart(el, _data[id]));
+        nv.addGraph(multiBarHorizontalChart(el, _data[id], 5));
     }else if(id === 'last'){
         nv.addGraph(discreteBarchar(el, _data[id]));
     }else if(id === 'os' || id === 'lang'){

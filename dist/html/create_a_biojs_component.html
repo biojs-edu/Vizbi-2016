@@ -38,9 +38,12 @@
 							<p class="first_in_slide left_create fragment fade-in">Not much!<br/><br/>
 							<span class="fragment fade-in">There are only 3 requirements to be in the BioJS registry:</span></p>
 							<ol>
-								<li class="fragment fade-in">The component has to be published in npm</li>
-								<li class="fragment fade-in">The code component has to be in github</li>
-								<li class="fragment fade-in">The keyword <code class="inline">biojs</code> needs to be included in the package.json</li>
+								<li class="fragment fade-in"><img src="https://raw.githubusercontent.com/gmetais/YellowLabTools/master/doc/img/npm-logo.png" class="inline_create"/>
+									The component has to be published in npm. </li>
+								<li class="fragment fade-in"><img src="http://cdn.flaticon.com/png/256/25231.png" class="inline_create"/>
+									The code component has to be in github. </li>
+								<li class="fragment fade-in"><img src="https://biojsnet.herokuapp.com/assets/img/biojs_circle_mint_trans.png?v=d0f6205d25" class="inline_create"/>
+									The keyword <code class="inline">biojs</code> needs to be included in the package.json</li>
 							</ol>
 						</div>
 					</section>
@@ -107,7 +110,7 @@ $ slush biojs
 ? Keywords for npm (separate with comma) biojs,barchart,d3
 ? A visualization lib? Yes
 ? Unit tests: No
-? Add a example css file? Yes
+? Add a example css file? No
 ? Configure a build system? (Gulp) No
 ? Linting (Check code style with JSHint) No
 ? Choose your license type: Apache-2.0
@@ -122,10 +125,10 @@ $ slush biojs
 						</div>    
 						<div class='right_create'>
 							<p class='left_create' >Available npm commands:
-<pre><code class="bash">$ npm run test</code></pre>
+<pre><code class="bash">$ npm run build</code></pre>
 <pre><code class="bash">$ npm run sniper</code></pre>
+<pre><code class="bash">$ npm run test</code></pre>
 <pre><code class="bash">$ npm run watch</code></pre>
-<pre><code class="bash">$ npm run css</code></pre>
 <pre><code class="bash">$ npm run w
 ...
 running: http://localhost:9090
@@ -136,23 +139,45 @@ running: http://localhost:9090
 					<section>
 						<h3>Playing with the example</h3>
 						<br/>
-						<p class='left_create' >While <code class="inline">npm run w</code> is running open the example file <code class="inline">biojs-vis-example/examples/simple.js</code> in your favourite editor:</p>
+						<p class='left_create' >Keep <code class="inline">npm run w</code> running. <br/><br/>Open the example file <code class="inline">biojs-vis-example/examples/simple.js</code> in your favourite editor:</p>
 <pre><code class="javascript">// if you don't specify a html file, the sniper will generate a div with id "rootDiv"
 var app = require("biojs-vis-example");
 var instance = new app({el: rootDiv, text: 'biojs'});</code></pre>
 						<p class="left_create">Then try changing the <code class="inline">text</code> option and refreshing your browser.</p>
 					</section>
 					<section>
-						<p class="left_create">The <code class="inline">npm run w</code> action, detects changes in your files, re-bundles the <code class="inline">biojs-vis-example/build/example.js</code> file, same for the CSS file, and exposes the result on <a href="http://localhost:9090/examples/simple">http://localhost:9090/examples/simple</a></p>
+						<p class="left_create">The <code class="inline">npm run w</code> action, detects changes in your files, re-bundles the <code class="inline">biojs-vis-example/build/example.js</code> file, and exposes the result on <a href="http://localhost:9090/examples/simple">http://localhost:9090/examples/simple</a></p>
+						<br/>
+						<div class="fragment fade-in">
+							<p><b>Task</b>: Add an style file.</p>
+							<img src="../img/biojs_adding_css.png" />
+						</div>
 						<div class="fragment fade-in"><br/>
-							<p class="left_create">Change the CSS: <code class="inline">biojs-vis-example/css/main.css</code>
+							<p class="left_create">Create a CSS file in this path: <code class="inline">biojs-vis-example/css/main.css</code>
 							<pre><code class="css">.header {
 	font-weight: bold;
 	color: green;
 }
 </code></pre>
-							<p class="left_create">And add the following line at the end of the <code class="inline">biojsvisexample</code> function, in the JavaScript file: <code class="inline">biojs-vis-example/lib/index.js</code>
+						<div>
+					</section>
+					<section>
+						<div><br/>
+							<p class="left_create">Add the following line at the end of the <code class="inline">biojsvisexample()</code> function, in the JavaScript file: <code class="inline">biojs-vis-example/lib/index.js</code></p>
 							<pre><code class="css">this.el.setAttribute("class", "header");</code></pre>
+						</div>
+						<div class="fragment fade-in"><br/>
+							<p class="left_create">Include the style file in the npm file: <code class="inline">biojs-vis-example/package.json</code>
+							<pre><code class="css">  "...
+sniper": {
+  "js": [ "/build/example.js"],
+  "css": [ "/css/main.css"],
+  "snippets": ["examples"],
+  "first": "simple"
+}, 
+...
+</code></pre>
+							<p class="left_create">This requires to restart <code class="inline">npm run w</code> for the sniper to consider the new file</p>
 						</div>
 					</section>
 
@@ -179,9 +204,8 @@ console.log(example); // - from another module</code></pre>
 					</section>
 					<section>
 						<h3>Next Task</h3>
-						<br/>
 						<p class='left_create' >Remove the functionality of displaying <code class="inline">"Hello BioJS"</code> and make it show <code class="inline">"BARCHART"</code>, but the code should be in a separate module.</p>
-						<br/>
+							<img src="../img/biojs_barchart_text.png" />
 						<div class="fragment fade-in">
 							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript">var Barchart = function(opts) {
@@ -214,7 +238,7 @@ module.exports = biojsvisexample = function(opts){
 						<h3>Next Task</h3>
 						<br/>
 						<p class='left_create' >Refactor your code to use D3 to manipulate your DOM.</p>
-						<br/>
+							<img src="../img/biojs_barchart_text_d3.png" />
 						<div class="fragment fade-in">
 							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript">var d3 = require("d3");
@@ -240,6 +264,7 @@ module.exports = Barchart;
 						<h3>Next Task</h3>
 						<br/>
 						<p class='left_create' >Given a sequence in your options, count how many times each base appears in it, and then display this values in the page.</p>
+							<img src="../img/biojs_counting_bases.png" />
 						<br/>						
 						<div class="fragment fade-in">
 							<p class='left_create' ><code class="inline">biojs-vis-example/examples/simple.js</code>:</p>
@@ -247,10 +272,10 @@ module.exports = Barchart;
 var instance = new app({el: rootDiv, sequence: "CAGTGCATGatACGTCAGTGCATGCTGGGGGGGGGgcatgcatgcatg"});
 </code></pre>
 						</div>
-						<div class="fragment fade-in">
+					</section>
+					<section>
 							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
-							<pre><code class="javascript">...
-var getBases = function(sequence) {
+						<pre><code class="javascript" style="max-height: 500px;">var getBases = function(sequence) {
   var s = sequence.toUpperCase();
   var bases = {};
   for (var i =0;i&lt;s.length;i++){
@@ -261,24 +286,16 @@ var getBases = function(sequence) {
   }
   return bases;
 } // Object {C: 9, A: 9, G: 20, T: 10}
-</code></pre>
-						</div>
-					</section>
-					<section>
-						<pre><code class="javascript">...
 var Barchart = function(opts) {
   var container = opts.el;
   var bases = getBases(opts.sequence);
-
   d3.select(container)
     .attr("class", "header")
     .text("Bases:")
     .selectAll("p")
     .data(d3.keys(bases)).enter()
     .append("p")
-      .text(function(d){
-        return d +": "+bases[d];
-      });
+      .text(function(d){ return d +": "+bases[d]; });
 }
 </code></pre>
 						<p>Interested in d3?? Read about <a href="https://bost.ocks.org/mike/join/">Thinking with Joins</a></p>
@@ -294,8 +311,10 @@ var Barchart = function(opts) {
 						<h3>Next Task</h3>
 						<br/>
 						<p class='left_create' >Change the text representation for a barchart.</p>
-						<br/>						
-						<div class="fragment fade-in">
+					     <img src="../img/barchart.png" style="border:0px"/>
+					</section>
+					<section>
+						<div >
 							<p class='left_create' ><code class="inline">biojs-vis-example/lib/barchart.js</code>:</p>
 							<pre><code class="javascript" style="max-height: 500px;">...
 var Barchart = function(opts) {
@@ -347,14 +366,24 @@ var Barchart = function(opts) {
 					<section>
 						<h3>Checklist</h3>
 						<ul>
-							<li class="fragment fade-in">Have you put your component in GitHub?<br/>
-								<a href="https://help.github.com/">GitHub Help</a></li>
-							<li class="fragment fade-in">Have you signed up in npm?<br/>
-								<a href="https://www.npmjs.com/signup">npm signup</a></li>
-							<li class="fragment fade-in">Does your <code class="inline">package.json</code> file includes the biojs tag and points to the right github repo?<br/>
-								<a href="http://edu.biojs.net/101/publish_it/">Other Checking.</a></li>
-							<li class="fragment fade-in">Have you added your npm user in this terminal?
+							<li class="fragment fade-in">
+								<img src="http://cdn.flaticon.com/png/256/25231.png" class="inline_create"/>
+								Have you put your component in GitHub?<br/>
+								<a href="https://help.github.com/">GitHub Help</a>
+							</li>
+							<li class="fragment fade-in">
+								<img src="https://raw.githubusercontent.com/gmetais/YellowLabTools/master/doc/img/npm-logo.png" class="inline_create"/>
+								Have you signed up in npm?<br/>
+								<a href="https://www.npmjs.com/signup">npm signup</a>
+							</li>
+							<li class="fragment fade-in">
+								<img src="https://raw.githubusercontent.com/gmetais/YellowLabTools/master/doc/img/npm-logo.png" class="inline_create"/>
+								Have you added your npm user in this terminal?
 								<pre><code class="bash">$ npm adduser</code></pre></li>
+							<li class="fragment fade-in">
+								<img src="https://biojsnet.herokuapp.com/assets/img/biojs_circle_mint_trans.png?v=d0f6205d25" class="inline_create"/>
+								Does your <code class="inline">package.json</code> file includes the biojs tag and points to the right github repo?<br/>
+								<a href="http://edu.biojs.net/101/publish_it/">Other Checking.</a></li>
 						</ul>
 						<div class="fragment fade-in">
 							<p class="left_create">Then simply:</p>
